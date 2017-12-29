@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+AStarPathFinder/Debug/
+AStarPathFinder/.vs/
+*.filters
