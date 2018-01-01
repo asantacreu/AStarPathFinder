@@ -38,8 +38,9 @@ int AStarPathFindingSample::Run() {
 bool AStarPathFindingSample::OnInit() {
 	int sdlInitialized = SDL_Init(SDL_INIT_EVERYTHING);
 	if (sdlInitialized >= 0) {
-		screen = SDL_CreateWindow("AStarPathFindingSample", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
-		if (screen != NULL) {
+		SDL_CreateWindowAndRenderer(640, 480, 0, &screen, &renderer);
+
+		if (screen != NULL && renderer != NULL) {
 			return true;
 		}
 	}
@@ -84,7 +85,10 @@ void AStarPathFindingSample::OnLoop() {
 
 
 void AStarPathFindingSample::OnPaint() {
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
+	SDL_RenderClear(renderer);
+	SDL_RenderPresent(renderer);
 }
 
 

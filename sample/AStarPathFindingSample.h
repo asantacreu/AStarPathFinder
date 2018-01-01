@@ -13,6 +13,7 @@ class AStarPathFindingSample {
 	private:
 		bool running;
 		SDL_Window* screen;
+		SDL_Renderer* renderer;
 
 		bool OnInit();
 		void OnExecute();
