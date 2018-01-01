@@ -8,9 +8,18 @@ class AStarPathFindingSample {
 	public:
 		AStarPathFindingSample();
 
-		bool Init();
 		int Run();
 
 	private:
+		bool running;
 		SDL_Window* screen;
+
+		bool OnInit();
+		void OnExecute();
+		void OnEvent(SDL_Event* event);
+		void OnLoop();
+		void OnPaint();
+		void OnCleanUp();
+		void OnExit();
+
 };
