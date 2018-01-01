@@ -20,6 +20,8 @@ class AStarPathFindingSample {
 		void OnEvent(SDL_Event* event);
 		void OnLoop();
 		void OnPaint();
+		void PaintBackground();
+		void PaintGrid();
 		void OnCleanUp();
 		void OnExit();
 

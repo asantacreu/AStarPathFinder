@@ -6,6 +6,12 @@
 #pragma comment(linker, "/INCLUDE:_mainCRTStartup")
 
 
+#define GRID_WIDTH 640
+#define GRID_HEIGHT 480
+
+#define CELL_SIZE 16
+
+
 
 int _tmain(int argc, char* argv[]) {
 	AStarPathFindingSample aStarPathFindingSample;
@@ -85,16 +91,43 @@ void AStarPathFindingSample::OnLoop() {
 
 
 void AStarPathFindingSample::OnPaint() {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	PaintBackground();
 
-	SDL_RenderClear(renderer);
+	PaintGrid();
+
 	SDL_RenderPresent(renderer);
 }
 
 
 
+void AStarPathFindingSample::PaintBackground() {
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+
+	SDL_RenderClear(renderer);
+}
+
+
+
+void AStarPathFindingSample::PaintGrid() {
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+
+	for (int x = 0; x < GRID_WIDTH; x += CELL_SIZE) {
+		for (int y = 0; y < GRID_HEIGHT; y += CELL_SIZE) {
+			SDL_RenderDrawLine(renderer, x, 0, x, GRID_HEIGHT);
+			SDL_RenderDrawLine(renderer, 0, y, GRID_WIDTH, y);
+		}
+	}
+}
+
+
+
 void AStarPathFindingSample::OnCleanUp() {
-	SDL_DestroyWindow(screen);
+	if (screen) {
+		SDL_DestroyWindow(screen);
+	}
+	if (renderer) {
+		SDL_DestroyRenderer(renderer);
+	}
 
 	SDL_Quit();
 }
