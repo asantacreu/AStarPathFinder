@@ -1,0 +1,17 @@
+#pragma once
+
+#define GRID_ROWS 15
+#define GRID_COLUMNS 20
+
+#define CELL_SIZE 32
+
+#define GRID_WIDTH GRID_COLUMNS * CELL_SIZE
+#define GRID_HEIGHT GRID_ROWS * CELL_SIZE
+
+
+#define STARTCELL_DEFAULT_X 0
+#define STARTCELL_DEFAULT_Y 0
+
+
+#define ENDCELL_DEFAULT_X 19
+#define ENDCELL_DEFAULT_Y 14
