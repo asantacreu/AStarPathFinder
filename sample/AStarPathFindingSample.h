@@ -1,8 +1,11 @@
 #pragma once
 
-//#include "resource.h"
 
 #include "SDL.h"
+
+
+#include "Cell.h"
+
 
 class AStarPathFindingSample {
 	public:
@@ -14,6 +17,9 @@ class AStarPathFindingSample {
 		bool running;
 		SDL_Window* screen;
 		SDL_Renderer* renderer;
+
+		Cell startCell;
+		Cell endCell;
 
 		bool OnInit();
 		void OnExecute();

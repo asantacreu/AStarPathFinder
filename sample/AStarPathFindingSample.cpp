@@ -1,27 +1,19 @@
 
 #include "stdafx.h"
 
+
 #include "AStarPathFindingSample.h"
 
-#pragma comment(linker, "/INCLUDE:_mainCRTStartup")
 
-
-#define GRID_WIDTH 640
-#define GRID_HEIGHT 480
-
-#define CELL_SIZE 16
+#include "Defines.h"
 
 
 
-int _tmain(int argc, char* argv[]) {
-	AStarPathFindingSample aStarPathFindingSample;
 
-	return aStarPathFindingSample.Run();
-}
-
-
-
-AStarPathFindingSample::AStarPathFindingSample() {
+AStarPathFindingSample::AStarPathFindingSample() 
+	: startCell(STARTCELL_DEFAULT_X, STARTCELL_DEFAULT_Y, 0, 255, 0, SDL_ALPHA_OPAQUE),
+	endCell(ENDCELL_DEFAULT_X, ENDCELL_DEFAULT_Y, 255, 0, 0, SDL_ALPHA_OPAQUE)
+{
 	running = true;
 	screen = NULL;
 }
@@ -44,7 +36,7 @@ int AStarPathFindingSample::Run() {
 bool AStarPathFindingSample::OnInit() {
 	int sdlInitialized = SDL_Init(SDL_INIT_EVERYTHING);
 	if (sdlInitialized >= 0) {
-		SDL_CreateWindowAndRenderer(640, 480, 0, &screen, &renderer);
+		SDL_CreateWindowAndRenderer(GRID_WIDTH, GRID_HEIGHT, 0, &screen, &renderer);
 
 		if (screen != NULL && renderer != NULL) {
 			return true;
@@ -94,6 +86,9 @@ void AStarPathFindingSample::OnPaint() {
 	PaintBackground();
 
 	PaintGrid();
+
+	startCell.Paint(renderer);
+	endCell.Paint(renderer);
 
 	SDL_RenderPresent(renderer);
 }
