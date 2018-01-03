@@ -126,6 +126,7 @@
     <ClCompile Include="..\sample\AStarPathFindingSample.cpp" />
     <ClCompile Include="..\sample\Cell.cpp" />
     <ClCompile Include="..\sample\main.cpp" />
+    <ClCompile Include="..\sample\Node.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
